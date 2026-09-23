@@ -1,0 +1,216 @@
+{
+  "trained_at": "2026-09-23T12:00:10+00:00",
+  "features": [
+    "duration",
+    "destination_bytes",
+    "missed_bytes",
+    "dst_ip_bytes",
+    "Temperature",
+    "Humidity",
+    "Status"
+  ],
+  "dropped_columns": {
+    "Type": "Is the label written another way (normal <=> Label 0). Now a target, not a feature.",
+    "source_ip": "Shortcut: .138 is always normal, .162/.164 are always MITM.",
+    "source_port": "Connection identifier, not a device property; attacks use a subset of ports.",
+    "timestamp": "Only 3 distinct values, carries no information."
+  },
+  "attack_types": [
+    "normal",
+    "dos",
+    "mitm"
+  ],
+  "rows": {
+    "after_dedup": 4002,
+    "train": 2801,
+    "test": 1201
+  },
+  "binary_threshold": 0.5,
+  "sensor_limits": {
+    "Temperature": {
+      "min": 23.2,
+      "max": 38.5,
+      "max_jump": 5.760000000000001
+    },
+    "Humidity": {
+      "min": 29.299999999999997,
+      "max": 72.20001,
+      "max_jump": 23.519999999999992
+    },
+    "flatline_readings": 22
+  },
+  "feature_importance": {
+    "binary": {
+      "Humidity": 0.2626286462052997,
+      "Temperature": 0.2593622559063736,
+      "duration": 0.16440132577530472,
+      "destination_bytes": 0.08890906484933096,
+      "Status_ON": 0.08418350440265789,
+      "Status_OFF": 0.06742575641131207,
+      "missed_bytes": 0.037710414564935714,
+      "dst_ip_bytes": 0.03537903188478541
+    },
+    "attack_type": {
+      "duration": 0.42969681070033255,
+      "Humidity": 0.20310860408131348,
+      "Temperature": 0.15965985195405352,
+      "destination_bytes": 0.060772604262845656,
+      "Status_ON": 0.05828430559758264,
+      "Status_OFF": 0.03966785452574713,
+      "missed_bytes": 0.027395488376341374,
+      "dst_ip_bytes": 0.021414480501783836
+    }
+  },
+  "metrics": {
+    "binary": {
+      "report": {
+        "0": {
+          "precision": 0.9844961240310077,
+          "recall": 0.9633375474083439,
+          "f1-score": 0.9738019169329073,
+          "support": 791.0
+        },
+        "1": {
+          "precision": 0.9320843091334895,
+          "recall": 0.9707317073170731,
+          "f1-score": 0.951015531660693,
+          "support": 410.0
+        },
+        "accuracy": 0.9658617818484596,
+        "macro avg": {
+          "precision": 0.9582902165822487,
+          "recall": 0.9670346273627085,
+          "f1-score": 0.9624087242968001,
+          "support": 1201.0
+        },
+        "weighted avg": {
+          "precision": 0.9666036643241114,
+          "recall": 0.9658617818484596,
+          "f1-score": 0.9660230510198282,
+          "support": 1201.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          762,
+          29
+        ],
+        [
+          12,
+          398
+        ]
+      ],
+      "labels": [
+        "0",
+        "1"
+      ]
+    },
+    "attack_type": {
+      "report": {
+        "normal": {
+          "precision": 0.9895287958115183,
+          "recall": 0.9557522123893806,
+          "f1-score": 0.9723472668810289,
+          "support": 791.0
+        },
+        "dos": {
+          "precision": 0.9,
+          "recall": 0.9310344827586207,
+          "f1-score": 0.9152542372881356,
+          "support": 87.0
+        },
+        "mitm": {
+          "precision": 0.8847262247838616,
+          "recall": 0.9504643962848297,
+          "f1-score": 0.9164179104477612,
+          "support": 323.0
+        },
+        "accuracy": 0.9525395503746877,
+        "macro avg": {
+          "precision": 0.9247516735317932,
+          "recall": 0.9457503638109436,
+          "f1-score": 0.934673138205642,
+          "support": 1201.0
+        },
+        "weighted avg": {
+          "precision": 0.9548574921666096,
+          "recall": 0.9525395503746877,
+          "f1-score": 0.9531696851137289,
+          "support": 1201.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          756,
+          0,
+          35
+        ],
+        [
+          1,
+          81,
+          5
+        ],
+        [
+          7,
+          9,
+          307
+        ]
+      ],
+      "labels": [
+        "normal",
+        "dos",
+        "mitm"
+      ]
+    },
+    "novelty": {
+      "report": {
+        "0": {
+          "precision": 0.717032967032967,
+          "recall": 0.9898862199747156,
+          "f1-score": 0.831651619755709,
+          "support": 791.0
+        },
+        "1": {
+          "precision": 0.926605504587156,
+          "recall": 0.24634146341463414,
+          "f1-score": 0.3892100192678227,
+          "support": 410.0
+        },
+        "accuracy": 0.736053288925895,
+        "macro avg": {
+          "precision": 0.8218192358100616,
+          "recall": 0.6181138416946749,
+          "f1-score": 0.6104308195117658,
+          "support": 1201.0
+        },
+        "weighted avg": {
+          "precision": 0.7885772970889349,
+          "recall": 0.736053288925895,
+          "f1-score": 0.6806099409879877,
+          "support": 1201.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          783,
+          8
+        ],
+        [
+          309,
+          101
+        ]
+      ],
+      "labels": [
+        "0",
+        "1"
+      ]
+    },
+    "binary_cv_f1": [
+      0.9593908629441624,
+      0.9376558603491272,
+      0.9487179487179487,
+      0.9567430025445293,
+      0.9462915601023018
+    ]
+  }
+}

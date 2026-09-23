@@ -1,0 +1,7 @@
+# Runtime: training, detector, simulator and the Streamlit app
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+joblib==1.6.0
+streamlit==1.64.0
+altair==6.3.0
